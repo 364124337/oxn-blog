@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第一遍文章 | Hexo22</title>
+  <title>移动端视网膜（Retina）屏幕下1px边框线 解决方案 | Hexo22</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是大事角度来讲撒赖扩大是的;sadsad asdsadsadsadsadsadsadsadsadsadsadsadsadsadsadsasadsadsad撒大苏打撒旦撒">
+  <meta name="description" content="移动端视网膜（Retina）屏幕下1px边框线 解决方案时间 2015-09-21 08:35:00  博客园-原创精华区原文  http://www.cnblogs.com/wangshiyang/p/4824923.html主题 WebKit CSS原因： 因为Retine屏的分辨率始终是普通屏幕的2倍，1px的边框在devicePixelRatio=2的retina屏下会显示成2px。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一遍文章">
+<meta property="og:title" content="移动端视网膜（Retina）屏幕下1px边框线 解决方案">
 <meta property="og:url" content="http://yoursite.com/2017/05/25/第一遍文章/index.html">
 <meta property="og:site_name" content="Hexo22">
-<meta property="og:description" content="这是大事角度来讲撒赖扩大是的;sadsad asdsadsadsadsadsadsadsadsadsadsadsadsadsadsadsasadsadsad撒大苏打撒旦撒">
-<meta property="og:updated_time" content="2017-05-25T13:22:42.397Z">
+<meta property="og:description" content="移动端视网膜（Retina）屏幕下1px边框线 解决方案时间 2015-09-21 08:35:00  博客园-原创精华区原文  http://www.cnblogs.com/wangshiyang/p/4824923.html主题 WebKit CSS原因： 因为Retine屏的分辨率始终是普通屏幕的2倍，1px的边框在devicePixelRatio=2的retina屏下会显示成2px。">
+<meta property="og:updated_time" content="2017-06-22T12:53:23.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一遍文章">
-<meta name="twitter:description" content="这是大事角度来讲撒赖扩大是的;sadsad asdsadsadsadsadsadsadsadsadsadsadsadsadsadsadsasadsadsad撒大苏打撒旦撒">
+<meta name="twitter:title" content="移动端视网膜（Retina）屏幕下1px边框线 解决方案">
+<meta name="twitter:description" content="移动端视网膜（Retina）屏幕下1px边框线 解决方案时间 2015-09-21 08:35:00  博客园-原创精华区原文  http://www.cnblogs.com/wangshiyang/p/4824923.html主题 WebKit CSS原因： 因为Retine屏的分辨率始终是普通屏幕的2倍，1px的边框在devicePixelRatio=2的retina屏下会显示成2px。">
   
     <link rel="alternate" href="/atom.xml" title="Hexo22" type="application/atom+xml">
   
@@ -52,9 +52,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      第一遍文章
+      移动端视网膜（Retina）屏幕下1px边框线 解决方案
     </h1>
   
 
@@ -85,13 +85,61 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是大事角度来讲撒赖扩大是的;sadsad</p>
-<p>asdsadsadsadsadsa<br>d<br>sad<br>sad<br>sad<br>sa<br>d<br>sad<br>sa<br>d<br>sa<br>dsa<br>d<br>sa<br>d<br>sasadsadsad撒大苏打撒旦撒</p>
+        <p>移动端视网膜（Retina）屏幕下1px边框线 解决方案<br>时间 2015-09-21 08:35:00  博客园-原创精华区<br>原文  <a href="http://www.cnblogs.com/wangshiyang/p/4824923.html" target="_blank" rel="external">http://www.cnblogs.com/wangshiyang/p/4824923.html</a><br>主题 WebKit CSS<br>原因：</p>
+<p>因为Retine屏的分辨率始终是普通屏幕的2倍，1px的边框在devicePixelRatio=2的retina屏下会显示成2px。</p>
 <a id="more"></a>
+<p>但在IOS8中，已经支持0.5px了，那就意味着, 在devicePixelRatio=2的时候，我们可以使用如下的css：</p>
+<p>div{<br>    border:1px solid #000;<br>}<br>@media (-webkit-min-device-pixel-ratio: 2) {<br>    div{<br>        border:0.5px solid #000;<br>    }<br>}<br>但在ios7以下，android等其他系统里，0.5px会被显示为0px，所以需要写hack来兼容旧版本的系统。</p>
+<p>有两种方案：</p>
+<p>1、JS判断浏览器版本，是否是IOS8+，是的话则加上hairlines的类名，加在head里即可。</p>
+<p>CSS代码：</p>
+<p>div{<br>      border:1px solid #000<br>}</p>
+<p>.hairlines div{<br>      border-width:0.5px<br>}<br>JS代码：</p>
+<p>if (window.devicePixelRatio &amp;&amp; devicePixelRatio &gt;= 2) {<br>      document.querySelector(‘body’).classList.add(‘hairlines’)<br>}<br>2、JS判断是否支持0.5px的边框，是的话，则加上hairlines的类名。（代码放在body内）</p>
+<p>if (window.devicePixelRatio &amp;&amp; devicePixelRatio &gt;= 2) {<br>    var testElem = document.createElement(‘div’);<br>    testElem.style.border = ‘.5px solid #000’;<br>    document.body.appendChild(testElem);<br>    //当div存在<br>    if (testElem.offsetHeight == 1){<br>      document.querySelector(‘html’).classList.add(‘hairlines’);<br>    }<br>    //添加完hairlines类名后，则删除div<br>    document.body.removeChild(testElem);<br>}<br>将代码放在body内会有一些重绘，第一种方法会更好一些。</p>
+<p>当然这些方法，只能兼容IOS7包括IOS7以上的机器，但如果想兼容其他机器怎么办呢？这块我就要细细道来…</p>
+<p>在retina屏下面，如果你写了这样的meta <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 你将永远无法写出1px宽度的东西。</p>
+<p>关于CSS像素和物理像素的定义，这个文章里有详细的介绍 走向视网膜（Retina）的Web时代 。</p>
+<p>在 viewport 中, 因为设置了initial-scale(表示初始时的缩放比例),minimum-scale(最小缩放比例)和maximum-scale(最大缩放比例)都为1, 因此整个页面都不能缩放, retina 屏幕下1个 css 像素对应 2个(多个)物理像素, 因此我们永远写不出1px(物理)宽度的东西. 然而我们其实可以这样写:</p>
+<p><meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no"><br>淘宝M端 就是这样的方案，这样一个css的像素就能完美对应1个物理像素，我们就可以写出1px的东西了。</p>
+<p>其他方案：</p>
+<ol>
+<li>transform: scale(0.5)</li>
+</ol>
+<p>方法1：</p>
+<p>CSS代码：</p>
+<p>div{<br>    height:1px;<br>    -webkit-transform: scaleY(0.5);<br>    -webkit-transform-origin:0 0;<br>    overflow: hidden;<br>    background: #000;<br>}<br>HTML代码：</p>
+<p><body><br>   1px边框线<br>   <div></div><br></body><br>缺点</p>
+<p>圆角无法实现，实现4条边框比较麻烦，并且只能单独实现，如果嵌套，会对包含的效果产生不想要的效果，所以此方案配合:after和before独立使用较多。</p>
+<p>比如画一个商品的边框四条线，容器的after和before可以画2条线，利用容器的父元素的after、before再画2条线。</p>
+<p>div{<br>    position: relative;<br>}<br>div:after{<br>    content:””;<br>    position: absolute;<br>    bottom:0px;<br>    left:0px;<br>    right:0px;<br>    border-bottom:1px solid #000;<br>    -webkit-transform:scaleY(.5);<br>    -webkit-transform-origin:0 0;<br>}</p>
+<ol>
+<li>box-shadow</li>
+</ol>
+<p>实现方法：</p>
+<p>利用CSS对阴影处理的方式实现0.5px的效果。</p>
+<p>-webkit-box-shadow:0 1px 1px -1px rgba(0, 0, 0, 0.5);<br>优点：</p>
+<p>基本所有场景都能满足，包含圆角的button，单条，多条线。</p>
+<p>缺点：</p>
+<p>颜色不好处理， 黑色 rgba(0,0,0,1) 最深的情况了。有阴影出现，不好用。<br>大量使用box-shadow可能会导致性能瓶颈。<br>四条边框实现效果不理想。</p>
+<ol>
+<li>使用background-image</li>
+</ol>
+<p>使用 background-image 实现1px有两种方式: 渐变 linear-gradient 或直接使用图片(base64)。</p>
+<p>渐变 linear-gradient   (50%有颜色，50%透明)</p>
+<p>单条线：</p>
+<p>div {<br>    height: 1px;<br>    background-image: -webkit-linear-gradient(top,transparent 50%,#000 50%);<br>    background-position: top left;<br>    background-repeat: no-repeat<br>    background-size: 100% 1px;<br>}<br>多条线：</p>
+<p>div {<br>        background-image:-webkit-linear-gradient(top, transparent 50%, #000 50%),-webkit-linear-gradient(bottom, transparent 50%, #000 50%),-webkit-linear-gradient(left, transparent 50%, #000 50%),-webkit-linear-gradient(right, transparent 50%, #000 50%);<br>        background-size: 100% 1px,100% 1px,1px 100%,1px 100%;<br>        background-repeat: no-repeat;<br>        background-position: top left, bottom left, left top, right top;<br>}<br>优点:</p>
+<p>可以设置单条,多条边框<br>可以设置颜色<br>缺点:</p>
+<p>大量使用渐变可能导致性能瓶颈<br>代码量大<br>多背景图片有兼容性问题<br>用图片(base64)：</p>
+<p>div {<br>        border-image:url(“data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB5JREFUeNpiPnH8zH/G////MzAxAAHTyRNn/wMEGABpvQm9g9TJ1QAAAABJRU5ErkJggg==”) 2 0 stretch;<br>        border-width: 0px 0px 1px;<br>}<br>优点:</p>
+<p>可以设置单条,多条边框<br>没有性能瓶颈的问题<br>缺点:</p>
+<p>修改颜色麻烦, 需要替换图片<br>需要用到两张图片<br>多背景图片有兼容性问题</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/25/第一遍文章/" data-id="cj34i9nol000034v5hfe7eiio" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/25/第一遍文章/" data-id="cj48fov3g0002ukv5364mrpvt" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -101,7 +149,7 @@
 <nav id="article-nav">
   
     <a href="/2017/05/25/第二篇文章/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           第二篇文章
@@ -111,7 +159,7 @@
   
   
     <a href="/2017/05/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -144,7 +192,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -153,7 +201,7 @@
           </li>
         
           <li>
-            <a href="/2017/05/25/第一遍文章/">第一遍文章</a>
+            <a href="/2017/05/25/第一遍文章/">移动端视网膜（Retina）屏幕下1px边框线 解决方案</a>
           </li>
         
           <li>
@@ -173,7 +221,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
